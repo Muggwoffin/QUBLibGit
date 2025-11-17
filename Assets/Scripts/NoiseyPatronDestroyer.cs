@@ -9,6 +9,9 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     [SerializeField] private float zRange = 40f;
     
     public PatronSpawner spawner;
+    public static int hits = 0;
+ 
+    
     void Update()
     {
         if (isRunningAway)
@@ -32,6 +35,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     }
     public void StartRunning(Vector3 direction)
     {
+
         runDirection = direction.normalized;
         isRunningAway = true;
     }
