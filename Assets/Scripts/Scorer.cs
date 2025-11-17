@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Scorer : MonoBehaviour
 {
  public TextMeshProUGUI scoreText;
  private int hits = 0;
+ public int winScore = 10;
 
  AudioSource audioSource;
  public void Start()
@@ -23,6 +25,11 @@ public class Scorer : MonoBehaviour
   {
       hits++;
       UpdateScore(hits);
+      if (hits >= winScore)
+      {
+          int currentIndex = SceneManager.GetActiveScene().buildIndex;
+          SceneManager.LoadScene(currentIndex + 1);
+      }
   }
 
   public void SubtractScore()
