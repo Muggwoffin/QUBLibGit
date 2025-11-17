@@ -31,7 +31,7 @@ public class PatronSpawner : MonoBehaviour
       
       if (patronScript != null)
       {
-        //Finding the player in space and pointing at the player
+        // The patron is finding the player in space and pointing at the player
         Vector3 directionToPlayer = (player.transform.position - obj.transform.position);
         obj.transform.forward = directionToPlayer.normalized;
         patronScript.spawner = this;

@@ -61,7 +61,7 @@ public class OverbookedController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
         }
         
-        // Space bar  triggers a sound
+        // Space bar  triggers a sound, the particles play and the patron is shushed
         if (Input.GetKeyDown(KeyCode.Space))
         {
             audioSource.PlayOneShot(Spacebar);
@@ -72,12 +72,12 @@ public class OverbookedController : MonoBehaviour
     }
 
     void ShushPatrons()
-    {
+    {   // Creating a view cone that has an angle of 60 and a range 
         GameObject[] patrons = GameObject.FindGameObjectsWithTag("Patron");
         float cosThreshold = Mathf.Cos(shushConeAngle * 0.5f * Mathf.Deg2Rad);
         Vector3 forward = transform.forward;
        ;
-
+        // 
         foreach (GameObject patron in patrons)
         {
             Vector3 toPatron = (patron.transform.position - transform.position).normalized;

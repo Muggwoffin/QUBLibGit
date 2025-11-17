@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4680240990561154107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.35, y: 1, z: 16.63}
+  m_LocalPosition: {x: 16.35, y: 1, z: 16.62}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -111,10 +111,10 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.50369
+  m_Center: {x: -0.0036900043, y: 0, z: 0}
 --- !u!114 &-6318243001549003550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +269,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: capsule_lite_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2167795294971712484, guid: 074352dbb67d9cc40b751ac25cef1005, type: 3}
+      propertyPath: m_Radius
+      value: 0.6941147
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167795294971712484, guid: 074352dbb67d9cc40b751ac25cef1005, type: 3}
+      propertyPath: m_Center.x
+      value: 0.15765953
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167795294971712484, guid: 074352dbb67d9cc40b751ac25cef1005, type: 3}
+      propertyPath: m_Center.z
+      value: -0.036455154
+      objectReference: {fileID: 0}
     - target: {fileID: 9121650914564249124, guid: 074352dbb67d9cc40b751ac25cef1005, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -291,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121650914564249124, guid: 074352dbb67d9cc40b751ac25cef1005, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.21456242
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 9121650914564249124, guid: 074352dbb67d9cc40b751ac25cef1005, type: 3}
       propertyPath: m_LocalRotation.w
