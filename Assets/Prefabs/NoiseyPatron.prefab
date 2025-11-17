@@ -131,6 +131,7 @@ MonoBehaviour:
   xRange: 40
   zRange: 40
   spawner: {fileID: 0}
+  scorer: {fileID: 0}
 --- !u!82 &7152298999409006895
 AudioSource:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 86d3ddc2ecb8743b0853b71fb8d77ff7, type: 3}
+  m_Resource: {fileID: 8300000, guid: ff313ab21f0828b40804b027389d4f26, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
