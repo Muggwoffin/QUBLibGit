@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatronSpawner
   patronPrefab: {fileID: 4680240990561154107, guid: 297fa9ad67a9a334a9851b846e6adda8, type: 3}
+  player: {fileID: 8927677684714459495}
   maxPatrons: 4
   xRange: 10
   zRange: 10
@@ -5620,6 +5621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Overbooked Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8971670019975998200, guid: e5ac413e7bf4cab42a57d0d5f52bcd70, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7868454916241905512, guid: e5ac413e7bf4cab42a57d0d5f52bcd70, type: 3}
     m_RemovedGameObjects: []
@@ -5640,6 +5645,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8971670019975998200, guid: e5ac413e7bf4cab42a57d0d5f52bcd70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8927677684714459498}
+    - targetCorrespondingSourceObject: {fileID: 8971670019975998200, guid: e5ac413e7bf4cab42a57d0d5f52bcd70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8927677684714459499}
   m_SourcePrefab: {fileID: 100100000, guid: e5ac413e7bf4cab42a57d0d5f52bcd70, type: 3}
 --- !u!4 &2959282680156735670 stripped
 Transform:
@@ -5782,6 +5790,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &8927677684714459499
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927677684714459495}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
