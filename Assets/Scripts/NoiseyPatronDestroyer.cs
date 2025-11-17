@@ -10,7 +10,11 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     
     public PatronSpawner spawner;
     public static int hits = 0;
- 
+    public Scorer scorer;
+    void Start()
+    {
+        scorer = FindAnyObjectByType<Scorer>();
+    }
     
     void Update()
     {
@@ -38,5 +42,6 @@ public class NoiseyPatronDestroyer : MonoBehaviour
 
         runDirection = direction.normalized;
         isRunningAway = true;
+        scorer.AddScore();
     }
 }
