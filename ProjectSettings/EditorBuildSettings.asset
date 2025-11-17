@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Library Lvl 1.unity
     guid: 5a7fdc3fde1474e95adca0f44a1fb425
   - enabled: 1
+    path: Assets/Scenes/Story Part 2.unity
+    guid: ef2d300c1a77c094d87e5c04fc242a5f
+  - enabled: 1
     path: Assets/Scenes/Overbooked.unity
     guid: a1a5940f81bcd8345a06dfd2983045bf
   - enabled: 1

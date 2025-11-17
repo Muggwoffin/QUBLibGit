@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 public class PatronSpawner : MonoBehaviour
 {
   public GameObject patronPrefab;
+  public GameObject player;
   private int currentCount = 0;
   [SerializeField] private int maxPatrons = 4;
   [SerializeField] private float xRange = 10.0f;
@@ -24,10 +25,15 @@ public class PatronSpawner : MonoBehaviour
       float randomX = Random.Range(-xRange, xRange);
       float randomZ = Random.Range(-zRange, zRange);
       Vector3 spawnPos = new Vector3(randomX, 1f, randomZ);
+      // Make a short word 'obj' to indicate the Patron
       GameObject obj = Instantiate(patronPrefab, spawnPos, Quaternion.identity);
       NoiseyPatronDestroyer patronScript = obj.GetComponent<NoiseyPatronDestroyer>();
+      
       if (patronScript != null)
       {
+        //Finding the player in space and pointing at the player
+        Vector3 directionToPlayer = (player.transform.position - obj.transform.position);
+        obj.transform.forward = directionToPlayer.normalized;
         patronScript.spawner = this;
       }
       currentCount++;

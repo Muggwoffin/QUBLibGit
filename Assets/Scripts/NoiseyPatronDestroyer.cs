@@ -42,6 +42,10 @@ public class NoiseyPatronDestroyer : MonoBehaviour
 
         runDirection = direction.normalized;
         isRunningAway = true;
+        if (runDirection != Vector3.zero)
+        {
+            transform.forward = runDirection;
+        }
         scorer.AddScore();
     }
 }

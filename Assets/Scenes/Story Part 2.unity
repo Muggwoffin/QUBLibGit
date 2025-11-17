@@ -817,7 +817,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318853397}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -1141,9 +1141,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "I need help shelving our many copies of Maurice J. Casey's book Hotel
-    Lux. \n\nPut them on the shelves - don't send them to the shredder!\n\nShelve
-    15 copies to progress to the next level."
+  m_text: 'These God Damn library users won''t shut up. Could you please shush them?
+    I can hear about 10 of them and they are DOING MY HEAD IN!
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1271,7 +1272,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 4a1c3680ad4594c6baa5ab0c33b300c8, type: 3}
+  m_Resource: {fileID: 8300000, guid: 201c7280d6a433f4f87e76303d84d092, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
