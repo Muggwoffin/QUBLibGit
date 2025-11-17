@@ -77,7 +77,7 @@ public class OverbookedController : MonoBehaviour
         float cosThreshold = Mathf.Cos(shushConeAngle * 0.5f * Mathf.Deg2Rad);
         Vector3 forward = transform.forward;
        ;
-        // 
+        // Using the tag system to make the patron run away. The patron links in to the NoiseyPatronDestroyer script which interacts with the dot product calculations.
         foreach (GameObject patron in patrons)
         {
             Vector3 toPatron = (patron.transform.position - transform.position).normalized;
