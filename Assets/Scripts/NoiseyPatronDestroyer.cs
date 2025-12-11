@@ -66,6 +66,11 @@ public class NoiseyPatronDestroyer : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * obstacleCheckDistance, Color.green);
             }
         }
+
+        else
+        {
+            Debug.DrawRay(ray.origin, ray.direction * obstacleCheckDistance, Color.green);
+        }
     }
     public void StartRunning(Vector3 direction)
     {
