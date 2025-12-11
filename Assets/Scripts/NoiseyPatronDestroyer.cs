@@ -11,6 +11,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     [SerializeField] private float obstacleCheckDistance = 8f;
     [SerializeField] private float avoidTurnSpeed = 120f;
     [SerializeField] private string obstacleTag = "Obstacle";
+    [SerializeField] private float sideRayAngle = 30f;
     
     public PatronSpawner spawner;
     public static int hits = 0;
@@ -55,6 +56,17 @@ public class NoiseyPatronDestroyer : MonoBehaviour
         //Build a ray from the patron position, forward in runDirection
         Ray ray = new Ray(transform.position, runDirection);
         RaycastHit hit;
+        RaycastHit rightHit;
+        RaycastHit leftHit;
+        // Side rays that rotate around the up vector3
+        
+        Vector3 rightDir = Quaternion.AngleAxis(sideRayAngle, Vector3.up) * runDirection;
+        Vector3 leftDir = Quaternion.AngleAxis(-sideRayAngle, Vector3.up) * runDirection;
+        Debug.DrawRay(transform.position, rightDir * obstacleCheckDistance, Color.cyan);
+        Debug.DrawRay(transform.position, leftDir * obstacleCheckDistance, Color.magenta);
+        
+        bool hasRightHit = Physics.Raycast(transform.position, rightDir, out hit, obstacleCheckDistance);
+        bool hasLeftHit = Physics.Raycast(transform.position, leftDir, out hit, obstacleCheckDistance);
 
         if (Physics.Raycast(ray, out hit, obstacleCheckDistance))
         { if (hit.collider != null && hit.collider.CompareTag(obstacleTag))
