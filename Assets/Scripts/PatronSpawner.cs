@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Quaternion = UnityEngine.Quaternion;
@@ -18,6 +19,7 @@ public class PatronSpawner : MonoBehaviour
   bool IsSpawnPointClear(Vector3 position)
   {
     float checkRadius = 1.5f;
+    float patronSeperation = 5f;
     //find colliders in a sphere around the position
     Collider[] hits = Physics.OverlapSphere(position, checkRadius);
 
@@ -27,6 +29,14 @@ public class PatronSpawner : MonoBehaviour
         {
         return false;
         }
+
+      if (col.CompareTag("Patron"))
+      {
+        if (Vector3.Distance(position, col.transform.position) < patronSeperation)
+        {
+          return false;
+        }
+      }
     }
     return true;
   }

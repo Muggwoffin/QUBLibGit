@@ -36,9 +36,9 @@ public class OverbookedController : MonoBehaviour
         //Apply movements and rotate
         
         Vector3 direction = new Vector3(horizontalInput, 0, verticalInput).normalized;
-        transform.Translate(direction * speed * Time.deltaTime);
-        float turnInput = Input.GetAxis("Horizontal");
-        transform.Rotate(Vector3.up * turnInput * turnSpeed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
+            float turnInput = Input.GetAxis("Horizontal");
+            transform.Rotate(Vector3.up * turnInput * turnSpeed * Time.deltaTime);
         // Player moves left to right on the x range
         if (transform.position.x < -xRange)
         {
