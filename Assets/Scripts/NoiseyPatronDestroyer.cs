@@ -8,6 +8,9 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     private Vector3 runDirection;
     [SerializeField] private float xRange = 40f;
     [SerializeField] private float zRange = 40f;
+    [SerializeField] private float obstacleCheckDistance = 8f;
+    [SerializeField] private float avoidTurnSpeed = 20f;
+    [SerializeField] private string obstacleTag = "Obstacle";
     
     public PatronSpawner spawner;
     public static int hits = 0;
@@ -21,6 +24,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     {
         if (isRunningAway)
         {
+            AvoidObstacle();
             // running away causes patron to run away and also gradually rotate rather than snap rotating
             transform.position += runDirection * speed * Time.deltaTime;
             float turnSpeed = 100f;
@@ -40,6 +44,25 @@ public class NoiseyPatronDestroyer : MonoBehaviour
         if (spawner != null)
         {
             spawner.ReducePatronCount();
+        }
+    }
+
+    public void AvoidObstacle()
+    {
+        //if we are not running anywhere we don't need to check anything.
+        if (runDirection == Vector3.zero) return;
+        
+        //Build a ray from the patron position, forward in runDirection
+        Ray ray = new Ray(transform.position, runDirection);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, obstacleCheckDistance))
+        {
+            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.yellow);
+        }
+        else
+        {
+            Debug.DrawRay(ray.origin, ray.direction * obstacleCheckDistance, Color.green);
         }
     }
     public void StartRunning(Vector3 direction)
