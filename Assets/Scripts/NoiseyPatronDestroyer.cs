@@ -57,12 +57,14 @@ public class NoiseyPatronDestroyer : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, obstacleCheckDistance))
-        {
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.yellow);
-        }
-        else
-        {
-            Debug.DrawRay(ray.origin, ray.direction * obstacleCheckDistance, Color.green);
+        { if (hit.collider != null && hit.collider.CompareTag(obstacleTag))
+            {
+                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
+            }
+            else
+            {
+                Debug.DrawRay(ray.origin, ray.direction * obstacleCheckDistance, Color.green);
+            }
         }
     }
     public void StartRunning(Vector3 direction)
