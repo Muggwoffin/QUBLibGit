@@ -9,7 +9,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     [SerializeField] private float xRange = 40f;
     [SerializeField] private float zRange = 40f;
     [SerializeField] private float obstacleCheckDistance = 8f;
-    [SerializeField] private float avoidTurnSpeed = 75f;
+    [SerializeField] private float avoidTurnSpeed = 120f;
     [SerializeField] private string obstacleTag = "Obstacle";
     
     public PatronSpawner spawner;
@@ -27,7 +27,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
             AvoidObstacle();
             // running away causes patron to run away and also gradually rotate rather than snap rotating
             transform.position += runDirection * speed * Time.deltaTime;
-            float turnSpeed = 100f;
+            float turnSpeed = 200f;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
         }
             // Patron is destroyed once they head beyond a certain range

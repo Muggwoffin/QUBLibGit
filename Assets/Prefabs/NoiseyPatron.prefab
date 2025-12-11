@@ -128,9 +128,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoiseyPatronDestroyer
   isRunningAway: 0
-  speed: 10
+  speed: 5
   xRange: 40
   zRange: 40
+  obstacleCheckDistance: 10
+  avoidTurnSpeed: 500
+  obstacleTag: Obstacle
   spawner: {fileID: 0}
   scorer: {fileID: 0}
 --- !u!82 &7152298999409006895
