@@ -1,5 +1,9 @@
+using System.Numerics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class PatronSpawner : MonoBehaviour
 {
@@ -10,6 +14,22 @@ public class PatronSpawner : MonoBehaviour
   [SerializeField] private float xRange = 10.0f;
   [SerializeField] private float zRange = 10.0f;
   [SerializeField] private float spawnInterval = 3.0f;
+
+  bool IsSpawnPointClear(Vector3 position)
+  {
+    float checkRadius = 1.5f;
+    //find colliders in a sphere around the position
+    Collider[] hits = Physics.OverlapSphere(position, checkRadius);
+
+    foreach (Collider col in hits)
+    {
+      if (col.CompareTag("Obstacle"))
+        {
+        return false;
+        }
+    }
+    return true;
+  }
 
   public void ReducePatronCount()
   {
@@ -22,9 +42,34 @@ public class PatronSpawner : MonoBehaviour
     void SpawnPatron()
     {
       if (currentCount >= maxPatrons) return;
-      float randomX = Random.Range(-xRange, xRange);
-      float randomZ = Random.Range(-zRange, zRange);
-      Vector3 spawnPos = new Vector3(randomX, 1f, randomZ);
+      //Attempt to find a clear spawn point
+      int maxAttempts = 10;
+      int attempts = 0;
+      Vector3 spawnPos = Vector3.zero;
+      bool foundSpot = false;
+
+      while (attempts < maxAttempts && !foundSpot)
+      {
+        float randomX = Random.Range(-xRange, xRange);
+        float randomZ = Random.Range(-zRange, zRange);
+        spawnPos = new Vector3(randomX, 1f, randomZ);
+
+        if (IsSpawnPointClear(spawnPos))
+        {
+          foundSpot = true;
+        }
+        else
+        {
+          attempts++;
+        }
+        
+      }
+      if (!foundSpot)
+      {
+        Debug.Log("No clear spawn area found after" + maxAttempts + " attempts");
+        return;
+      }
+
       // Make a short word 'obj' to indicate the Patron
       GameObject obj = Instantiate(patronPrefab, spawnPos, Quaternion.identity);
       NoiseyPatronDestroyer patronScript = obj.GetComponent<NoiseyPatronDestroyer>();
