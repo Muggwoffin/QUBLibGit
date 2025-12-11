@@ -9,7 +9,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     [SerializeField] private float xRange = 40f;
     [SerializeField] private float zRange = 40f;
     [SerializeField] private float obstacleCheckDistance = 8f;
-    [SerializeField] private float avoidTurnSpeed = 20f;
+    [SerializeField] private float avoidTurnSpeed = 75f;
     [SerializeField] private string obstacleTag = "Obstacle";
     
     public PatronSpawner spawner;
@@ -60,6 +60,21 @@ public class NoiseyPatronDestroyer : MonoBehaviour
         { if (hit.collider != null && hit.collider.CompareTag(obstacleTag))
             {
                 Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
+                //Define a Vector3 that makes the patron move along shelving rather than through it.
+                Vector3 avoidDirection = Vector3.Cross(hit.normal, Vector3.up).normalized;
+                //Choose the side that is closest to the patron to move 
+                if (Vector3.Dot(avoidDirection, runDirection) < 0)
+                {
+                    avoidDirection = -avoidDirection;
+                }
+                //Steer runDirection towards that side
+                runDirection = Vector3.RotateTowards(runDirection, avoidDirection,
+                    avoidTurnSpeed * Mathf.Deg2Rad * Time.deltaTime, 0f);
+                //Update visual so the patron also turn in the correct direction, linking into lookrotation
+                if (runDirection != Vector3.zero)
+                {
+                    targetRotation = Quaternion.LookRotation(runDirection, Vector3.up);
+                }
             }
             else
             {
