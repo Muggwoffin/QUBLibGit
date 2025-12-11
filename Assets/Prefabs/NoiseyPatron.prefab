@@ -132,8 +132,9 @@ MonoBehaviour:
   xRange: 40
   zRange: 40
   obstacleCheckDistance: 10
-  avoidTurnSpeed: 500
+  avoidTurnSpeed: 1000
   obstacleTag: Obstacle
+  sideRayAngle: 60
   spawner: {fileID: 0}
   scorer: {fileID: 0}
 --- !u!82 &7152298999409006895

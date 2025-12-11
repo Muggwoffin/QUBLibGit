@@ -65,12 +65,13 @@ public class NoiseyPatronDestroyer : MonoBehaviour
         Debug.DrawRay(transform.position, rightDir * obstacleCheckDistance, Color.cyan);
         Debug.DrawRay(transform.position, leftDir * obstacleCheckDistance, Color.magenta);
         
-        bool hasRightHit = Physics.Raycast(transform.position, rightDir, out hit, obstacleCheckDistance);
-        bool hasLeftHit = Physics.Raycast(transform.position, leftDir, out hit, obstacleCheckDistance);
+        bool hasRightHit = Physics.Raycast(transform.position, rightDir, out rightHit, obstacleCheckDistance);
+        bool hasLeftHit = Physics.Raycast(transform.position, leftDir, out leftHit, obstacleCheckDistance);
 
         if (Physics.Raycast(ray, out hit, obstacleCheckDistance))
         { if (hit.collider != null && hit.collider.CompareTag(obstacleTag))
             {
+                Debug.Log("Forward Hit");
                 Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
                 //Define a Vector3 that makes the patron move along shelving rather than through it.
                 Vector3 desiredDirection = runDirection;
@@ -80,18 +81,20 @@ public class NoiseyPatronDestroyer : MonoBehaviour
                     desiredDirection = rightDir;
                 }
                 //If left side is clear, prefer left
-                if (!hasLeftHit && hasRightHit)
+                else if (!hasLeftHit && hasRightHit)
                 {
                     desiredDirection = leftDir;
                 }
-                Vector3 avoidDirection = Vector3.Cross(hit.normal, Vector3.up).normalized;
-                //Choose the side that is closest to the patron to move 
-                if (Vector3.Dot(avoidDirection, runDirection) < 0)
+                else if (!hasLeftHit && !hasRightHit)
                 {
-                    avoidDirection = -avoidDirection;
+                    desiredDirection = leftDir;
+                }
+                else
+                {
+                    desiredDirection = leftDir;
                 }
                 //Steer runDirection towards that side
-                runDirection = Vector3.RotateTowards(runDirection, avoidDirection,
+                runDirection = Vector3.RotateTowards(runDirection, desiredDirection.normalized,
                     avoidTurnSpeed * Mathf.Deg2Rad * Time.deltaTime, 0f);
                 //Update visual so the patron also turn in the correct direction, linking into lookrotation
                 if (runDirection != Vector3.zero)
