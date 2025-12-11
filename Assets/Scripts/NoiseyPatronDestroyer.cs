@@ -73,6 +73,17 @@ public class NoiseyPatronDestroyer : MonoBehaviour
             {
                 Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
                 //Define a Vector3 that makes the patron move along shelving rather than through it.
+                Vector3 desiredDirection = runDirection;
+                //If right side is clear, prefer right
+                if (!hasRightHit && hasLeftHit)
+                {
+                    desiredDirection = rightDir;
+                }
+                //If left side is clear, prefer left
+                if (!hasLeftHit && hasRightHit)
+                {
+                    desiredDirection = leftDir;
+                }
                 Vector3 avoidDirection = Vector3.Cross(hit.normal, Vector3.up).normalized;
                 //Choose the side that is closest to the patron to move 
                 if (Vector3.Dot(avoidDirection, runDirection) < 0)
