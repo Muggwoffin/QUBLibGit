@@ -1,6 +1,6 @@
 using System.Numerics;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -107,5 +107,11 @@ public class OverbookedController : MonoBehaviour
         currentNoise = Mathf.Clamp(currentNoise, 0, maxNoise);
         Debug.Log("Current Noise:" + currentNoise);
         healthBar.SetNoise(currentNoise);
+
+        if (currentNoise >= maxNoise)
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
 }
