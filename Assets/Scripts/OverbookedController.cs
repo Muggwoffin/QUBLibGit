@@ -18,6 +18,9 @@ public class OverbookedController : MonoBehaviour
     [SerializeField] private float shushConeAngle = 60f;
     [SerializeField] private float shushRange = 6f;
     [SerializeField] ParticleSystem shushParticles;
+    public HealthBar healthBar;
+    public int maxNoise;
+    public int currentNoise;
     
     AudioSource audioSource;
     private Rigidbody rb;
@@ -26,6 +29,13 @@ public class OverbookedController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         Debug.Log("AudioSource found: " + audioSource);
+    }
+
+    private void Start()
+    {
+        currentNoise = 0;
+        healthBar.SetMaxNoise(maxNoise);
+        healthBar.SetNoise(currentNoise);
     }
     void Update()
     { 
@@ -65,6 +75,7 @@ public class OverbookedController : MonoBehaviour
             audioSource.PlayOneShot(Spacebar);
             shushParticles.Play();
             ShushPatrons();
+            MakeNoise(10);
 
         }
     }
@@ -88,5 +99,13 @@ public class OverbookedController : MonoBehaviour
                 
             }
         }
+    }
+
+    void MakeNoise(int noise)
+    {
+        currentNoise += noise;
+        currentNoise = Mathf.Clamp(currentNoise, 0, maxNoise);
+        Debug.Log("Current Noise:" + currentNoise);
+        healthBar.SetNoise(currentNoise);
     }
 }
