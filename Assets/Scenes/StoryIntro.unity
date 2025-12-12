@@ -1143,7 +1143,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "I need help shelving our many copies of Maurice J. Casey's book Hotel
     Lux. \n\nPut them on the shelves - don't send them to the shredder!\n\nShelve
-    15 copies to progress to the next level."
+    10 copies to progress to the next level."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
