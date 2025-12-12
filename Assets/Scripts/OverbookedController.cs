@@ -82,7 +82,9 @@ public class OverbookedController : MonoBehaviour
     }
 
     void ShushPatrons()
-    {   // Creating a view cone that has an angle of 60 and a range 
+    {   //MATH CONTENT DOT PRODUCT
+        
+        // Creating a view cone that has an angle of 60 and a range 
         GameObject[] patrons = GameObject.FindGameObjectsWithTag("Patron");
         float cosThreshold = Mathf.Cos(shushConeAngle * 0.5f * Mathf.Deg2Rad);
         Vector3 forward = transform.forward;

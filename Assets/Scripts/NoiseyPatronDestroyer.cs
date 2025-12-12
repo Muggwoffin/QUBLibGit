@@ -62,6 +62,7 @@ public class NoiseyPatronDestroyer : MonoBehaviour
 
     public void AvoidObstacle()
     {
+        //MATH CONTENT HERE - RAYCASTS (Dot.Product and Angles)
         //if we are not running anywhere we don't need to check anything.
         if (runDirection == Vector3.zero) return;
         
