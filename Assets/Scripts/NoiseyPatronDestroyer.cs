@@ -16,9 +16,17 @@ public class NoiseyPatronDestroyer : MonoBehaviour
     public PatronSpawner spawner;
     public static int hits = 0;
     public Scorer scorer;
+    public int noiseAmount = 15;
+    private OverbookedController player;
     void Start()
     {// make sure the scorer is connected here so that the score goes up when patron is shushed
         scorer = FindAnyObjectByType<Scorer>();
+        player = FindAnyObjectByType<OverbookedController>();
+
+        if (player != null)
+        {
+            player.AddPatronNoise(noiseAmount);
+        }
     }
     
     void Update()
@@ -35,6 +43,10 @@ public class NoiseyPatronDestroyer : MonoBehaviour
          if (transform.position.x > xRange ||  transform.position.z > zRange||
              transform.position.x <-xRange || transform.position.z < -zRange)
         {
+            if (player != null)
+            {
+                player.RemovePatronNoise(noiseAmount);
+            }
             Destroy(gameObject);
         }
      

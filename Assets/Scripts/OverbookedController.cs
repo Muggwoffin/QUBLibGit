@@ -21,6 +21,7 @@ public class OverbookedController : MonoBehaviour
     public HealthBar healthBar;
     public int maxNoise;
     public int currentNoise;
+    public int noisePerPatron = 15;
     
     AudioSource audioSource;
     private Rigidbody rb;
@@ -99,6 +100,22 @@ public class OverbookedController : MonoBehaviour
                 
             }
         }
+    }
+
+    public void AddPatronNoise(int amount)
+    {
+        currentNoise += amount;
+        currentNoise = Mathf.Clamp(currentNoise, 0, maxNoise);
+        healthBar.SetNoise(currentNoise);
+        Debug.Log("Noise after Patron spawns: " + currentNoise);
+    }
+    
+    public void RemovePatronNoise(int amount)
+    {
+        currentNoise -= amount;
+        currentNoise = Mathf.Clamp(currentNoise, 0, maxNoise);
+        healthBar.SetNoise(currentNoise);
+        Debug.Log("Noise after Patron destroys: " + currentNoise);
     }
 
     void MakeNoise(int noise)
